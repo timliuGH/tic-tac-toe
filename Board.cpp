@@ -9,9 +9,7 @@
 *****************************************************************************/
 Board::Board()
 {
-    for (int row = 0; row < rows; row++)
-        for (int col = 0; col < cols; col++)
-            spaces[row][col] = '_';
+    reset();
 }
 
 /*****************************************************************************
@@ -108,4 +106,15 @@ void Board::print()
             std::cout << spaces[row][col] << " ";
         std::cout << std::endl;
     }
+}
+
+
+/*****************************************************************************
+ * Reset the board to empty spaces
+*****************************************************************************/
+void Board::reset()
+{
+    for (int row = 0; row < rows; row++)
+        for (int col = 0; col < cols; col++)
+            spaces[row][col] = '_';
 }

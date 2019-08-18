@@ -21,6 +21,7 @@ class Board
         bool _checkColumns(char turn);
         bool _checkDiagonals(char turn);
         void print();
+        void reset();
 };
 
 #endif
