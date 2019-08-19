@@ -8,6 +8,10 @@ void test(Board game)
         std::cout << "X won!\n" << std::endl;
     if (game.gameState() == O_WON)
         std::cout << "O won!\n" << std::endl;
+    if (game.gameState() == UNFINISHED)
+        std::cout << "Game is unfinished\n" << std::endl;
+    if (game.gameState() == DRAW)
+        std::cout << "Cat's cradle!\n" << std::endl;
 }
 
 int main()
@@ -61,6 +65,19 @@ int main()
     game.makeMove(1, 3, 'x');
     game.makeMove(2, 2, 'x');
     game.makeMove(3, 1, 'x');
+    test(game);
+
+    std::cout << "--Testing DRAW--" << std::endl;
+    game.reset();
+    game.makeMove(1, 1, 'o');
+    game.makeMove(1, 2, 'o');
+    game.makeMove(1, 3, 'x');
+    game.makeMove(2, 1, 'x');
+    game.makeMove(2, 2, 'x');
+    game.makeMove(2, 3 ,'o');
+    game.makeMove(3, 1, 'o');
+    game.makeMove(3, 2, 'x');
+    game.makeMove(3, 3, 'x');
     test(game);
 
     return 0;

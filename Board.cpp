@@ -44,9 +44,12 @@ State Board::gameState()
     // Check if any rows, columns, or diagonals have same char
     if (_checkRows('x') || _checkColumns('x') || _checkDiagonals('x'))
         return X_WON;
-    if (_checkRows('o') || _checkColumns('o') || _checkDiagonals('o'))
+    else if (_checkRows('o') || _checkColumns('o') || _checkDiagonals('o'))
         return O_WON;
-    return UNFINISHED;
+    else if (_checkUnfinished())
+        return UNFINISHED;
+    else
+        return DRAW;
 }
 
 /*****************************************************************************
@@ -82,7 +85,7 @@ bool Board::_checkColumns(char turn)
 }
 
 /*****************************************************************************
- * Helper function for gameState; checks columns for winner
+ * Helper function for gameState; checks diagonals for winner
 *****************************************************************************/
 bool Board::_checkDiagonals(char turn)
 {
@@ -93,6 +96,21 @@ bool Board::_checkDiagonals(char turn)
         return true;
     else
         return false;
+}
+
+/*****************************************************************************
+ * Helper function for gameState; checks if board has empty space
+*****************************************************************************/
+bool Board::_checkUnfinished()
+{
+    for (int row = 0; row < rows; row++)
+        for (int col = 0; col < cols; col++)
+        {
+            if (spaces[row][col] == space)
+                return true;
+            else
+                return false;
+        }
 }
 
 /*****************************************************************************
@@ -108,7 +126,6 @@ void Board::print()
     }
 }
 
-
 /*****************************************************************************
  * Reset the board to empty spaces
 *****************************************************************************/
@@ -116,5 +133,5 @@ void Board::reset()
 {
     for (int row = 0; row < rows; row++)
         for (int col = 0; col < cols; col++)
-            spaces[row][col] = '_';
+            spaces[row][col] = space;
 }

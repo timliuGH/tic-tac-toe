@@ -8,6 +8,7 @@ enum State {X_WON, O_WON, DRAW, UNFINISHED};
 
 const int rows = 3;
 const int cols = 3;
+const char space = '_';
 
 class Board
 {
@@ -20,6 +21,7 @@ class Board
         bool _checkRows(char turn);
         bool _checkColumns(char turn);
         bool _checkDiagonals(char turn);
+        bool _checkUnfinished();
         void print();
         void reset();
 };
