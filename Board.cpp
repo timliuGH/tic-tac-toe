@@ -108,9 +108,8 @@ bool Board::_checkUnfinished()
         {
             if (spaces[row][col] == space)
                 return true;
-            else
-                return false;
         }
+    return false;
 }
 
 /*****************************************************************************
